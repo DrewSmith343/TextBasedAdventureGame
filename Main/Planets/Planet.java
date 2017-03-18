@@ -1,6 +1,6 @@
-package map;
+package Planets;
 
-import game.Room; 
+import Game.Room; 
 
 public abstract class Planet {
 

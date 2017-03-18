@@ -1,6 +1,6 @@
-package game;
+package Game;
 
-import map.*;
+import Planets.*;
 
 /**
  * Game.java
