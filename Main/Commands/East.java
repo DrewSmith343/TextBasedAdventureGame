@@ -19,10 +19,10 @@ public class East implements Command {
 	public void execute(String fullCommand) {
 		if (Game.getGame().getCurrentRoom().getEnemy() == null) {
 			Room nextRoom = Game.getGame().getCurrentRoom().getEast();
-			if (nextRoom == null)
-				System.out.println("There are only cliffs in that direction.");
-			else
-				Game.getGame().setCurrentRoom(nextRoom);
+			if (nextRoom == null){
+				nextRoom =Game.getGame().addRoom("east");	
+			}
+			Game.getGame().setCurrentRoom(nextRoom);
 		} else
 			System.out.println("You can't run, you can only fight");
 	}

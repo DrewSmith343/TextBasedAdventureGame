@@ -1,6 +1,7 @@
 package Game;
 
 import Planets.*;
+import java.util.HashMap;
 
 /**
  * Game.java
@@ -50,7 +51,7 @@ public class Game {
 	/**
 	 * multidimensional array for the rooms on each planet
 	 */
-	private Room[][] rooms;
+	private HashMap<Tuple,Room> rooms;
 
 	/**
 	 * Return the room in which the user is currently.
@@ -111,7 +112,7 @@ public class Game {
 			System.out.println("You managed to leave the planet");
 		currentPlanet = planets[++planetNum];
 		rooms = currentPlanet.getRoom();
-		currentRoom = rooms[2][2];
+		currentRoom = rooms.get(new Tuple(2,2));
 		System.out.println(currentPlanet.getDescription());
 	}
 
@@ -143,9 +144,30 @@ public class Game {
 	 * @return true if player is in room with rocket, false otherwise
 	 */
 	public boolean atRocket() {
-		if (currentRoom == rooms[2][2])
+		if (currentRoom == rooms.get(new Tuple(2,2)))
 			return true;
 		return false;
+	}
+	
+	public Room addRoom(String direction){
+		int x = currentRoom.getX();
+		int y = currentRoom.getY();
+		Room temp = null;
+		
+		if (direction.equalsIgnoreCase("East"))
+			x++;
+		if (direction.equalsIgnoreCase("West"))
+			x--;
+		if (direction.equalsIgnoreCase("North"))
+			y++;
+		if (direction.equalsIgnoreCase("South"))
+			y--;	
+		rooms.put(new Tuple(x, y), temp = new Room(planetNum+1, x, y));
+		temp.setEast(rooms.get(new Tuple(x+1,y)));
+		temp.setNorth(rooms.get(new Tuple(x,y+1)));
+		temp.setSouth(rooms.get(new Tuple(x,y-1)));
+		temp.setWest(rooms.get(new Tuple(x-1,y)));
+		return temp; 
 	}
 
 }

@@ -11,7 +11,7 @@ package Game;
 public class PlayGame {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome, archeology major.\n" + 
+		System.out.println("Welcome, archeology TTTTTT major.\n" + 
 		"Your goal is to get a legendary artifact from the planet Eart.\n" +
 		"Go from each planet to the next, getting what you need to survive.\n" +
 		"Enter help for help guide/list of commands.");
