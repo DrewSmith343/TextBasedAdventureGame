@@ -1,4 +1,4 @@
-package map;
+package Planets;
 
 public class NoLightPlnt extends Planet {
 	private String description, status; //variables for planet description and status

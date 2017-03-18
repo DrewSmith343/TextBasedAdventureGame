@@ -1,6 +1,6 @@
-package commands;
+package Commands;
 
-import game.*;
+import Game.*;
 
 /**
  * East.java

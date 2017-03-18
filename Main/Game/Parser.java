@@ -1,4 +1,4 @@
-package game;
+package Game;
 
 /**
  * Parser.java
@@ -12,8 +12,9 @@ package game;
  */
 
 import java.util.Scanner;
+
 import java.util.HashMap;
-import commands.*;
+import Commands.*;
 
 public class Parser {
 

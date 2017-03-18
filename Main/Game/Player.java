@@ -1,6 +1,6 @@
-package game;
+package Game;
 
-import item.Item;
+import Items.Item;
 
 /**
  * Player.java

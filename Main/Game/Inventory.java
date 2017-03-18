@@ -1,9 +1,9 @@
-package game;
+package Game;
 
 import java.util.ArrayList;
 
-import item.*;
-import item.Weapon;
+import Items.*;
+import Items.Weapon;
 
 /**
  * Inventory.java

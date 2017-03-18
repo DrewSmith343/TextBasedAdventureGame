@@ -1,4 +1,4 @@
-package item;
+package Items;
 
 public class Tech extends Item{
 

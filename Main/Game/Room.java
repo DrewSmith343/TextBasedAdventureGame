@@ -1,6 +1,6 @@
-package game;
+package Game;
 
-import item.*;
+import Items.*;
 
 /**
  * Room.java

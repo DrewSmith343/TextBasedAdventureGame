@@ -1,7 +1,7 @@
-package commands;
+package Commands;
 
-import game.*;
-import item.Item;
+import Game.*;
+import Items.Item;
 
 /**
  * Take.java

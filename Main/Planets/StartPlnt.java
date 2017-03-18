@@ -1,4 +1,4 @@
-package map;
+package Planets;
 
 public class StartPlnt extends Planet {
 

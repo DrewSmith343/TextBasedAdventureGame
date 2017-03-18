@@ -1,6 +1,6 @@
-package commands;
+package Commands;
 
-import game.Player;
+import Game.Player;
 
 /**
  * Eat.java

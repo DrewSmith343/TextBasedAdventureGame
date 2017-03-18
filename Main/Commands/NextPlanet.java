@@ -1,7 +1,7 @@
-package commands;
+package Commands;
 
-import game.Game;
-import game.Player;
+import Game.Game;
+import Game.Player;
 
 /**
  * NextPlanet.java

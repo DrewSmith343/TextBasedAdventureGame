@@ -1,4 +1,4 @@
-package map;
+package Planets;
 
 public class PostImpctEarth extends Planet {
 	public String status, description; //variables for planet description and status
