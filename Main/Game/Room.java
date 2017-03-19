@@ -1,6 +1,7 @@
 package Game;
 
 import Items.*;
+import Planets.*; 
 
 /**
  * Room.java
@@ -32,7 +33,7 @@ public class Room {
 	/**
 	 * The planet level the room is in
 	 */
-	private int level;
+	private int level, x, y;
 
 	/**
 	 * The enemy, if there is one, that is in the room
@@ -86,7 +87,7 @@ public class Room {
 	 * 
 	 * @param the planet that this room is on
 	 */
-	public Room(int level) {
+	public Room(int level, int x, int y) {
 		int temp = (int) (Math.random() * 20);
 		descrip[0] = descriptionArray[level - 1][temp].toLowerCase();
 
@@ -100,13 +101,15 @@ public class Room {
 		else
 			descrip[2] = "NA";
 
-		if (((int) (Math.random() * 100)) <= 45) // same as above but for monster
+		if (((int) (Math.random() * 100)) == 45) // same as above but for monster
 			monsterCreator(this.monster = new Enemy(level));
 		else
 			descrip[3] = "NA";
 
 		descrip[4] = "NA";
 		this.level = level; // sets the level
+		this.y = y;
+		this.x = x;
 	}
 
 	/**
@@ -327,5 +330,17 @@ public class Room {
 		if (!descrip[4].equals("NA"))
 			return true;
 		return false;
+	}
+	
+	public Tuple getLocation(){
+		return new Tuple(x,y);
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y; 
 	}
 }

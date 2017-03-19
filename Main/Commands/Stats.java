@@ -1,5 +1,6 @@
 package Commands;
 
+import Game.Game;
 import Game.Player;
 
 /**
@@ -16,7 +17,9 @@ public class Stats implements Command {
 	 * @param fullCommand Unused. The string representing the entire command
 	 */
 	public void execute(String fullCommand) {
-		Player.getInstance().status();
+		//Player.getInstance().status();
+		System.out.println(Game.getGame().getCurrentRoom().getX() + "     " + Game.getGame().getCurrentRoom().getY());
+
 	}
 
 }

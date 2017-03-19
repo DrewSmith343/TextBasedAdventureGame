@@ -20,9 +20,8 @@ public class West implements Command {
 		if (Game.getGame().getCurrentRoom().getEnemy() == null) {
 			Room nextRoom = Game.getGame().getCurrentRoom().getWest();
 			if (nextRoom == null)
-				System.out.println("There are only cliffs in that direction.");
-			else
-				Game.getGame().setCurrentRoom(nextRoom);
+				nextRoom = Game.getGame().addRoom("west");
+			Game.getGame().setCurrentRoom(nextRoom);
 		} else
 			System.out.println("You can't run, you can only fight");
 	}

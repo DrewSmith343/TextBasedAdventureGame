@@ -1,41 +1,44 @@
 package Planets;
 
-import Game.Room; 
+import Game.Room;
+import Items.Item;
+
+import java.util.HashMap;
+
 
 public abstract class Planet {
 
 	protected String description, status;    //variables for descriptions and status of planet
-	protected Room[][] landscape;            //array for multiple landscapes on each planet
+	protected HashMap<Tuple, Room> landscape;
+	private int x, y; 
+          //array for multiple landscapes on each planet
 
 	protected Planet(int level) {
-		landscape = new Room[5][5];  //sets landscape
-		for (int i = 0; i < 5; i++) {  
-			for (int j = 0; j < 5; j++) {
-				landscape[i][j] = new Room(level); //generates a room at this location of array
+		landscape = new HashMap <Tuple, Room>(); 
+		
+		for (int x = 0; x < 5; x++) { 
+			for (int y = 0; y < 5; y++) {
+				landscape.put(new Tuple(x,y) , new Room(level, x, y)); 
 			}
 		}
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
-				if (i != 0) { //if there is nothing north of the room
-					landscape[i][j].setNorth(landscape[i - 1][j]); //sets north room
+		
+		for (int x = 0; x < 5; x++) {
+			for (int y = 0; y < 5; y++) {
+				if (x != 0) { //if there is nothing north of the room
+					landscape.get(new Tuple(x,y)).setNorth(landscape.get(new Tuple(x,y+1))); //sets north room
 				}
-				if (j != 0) { //if there is nothing east of the room
-					landscape[i][j].setEast(landscape[i][j - 1]); //sets east room
+				if (y != 0) { //if there is nothing east of the room
+					landscape.get(new Tuple(x,y)).setEast(landscape.get(new Tuple(x+1,y))); //sets east room
 				}
-				if (i < 4) { //if there is nothing south of the room
-					landscape[i][j].setSouth(landscape[i + 1][j]); //sets south room
+				if (x < 4) { //if there is nothing south of the room
+					landscape.get(new Tuple(x,y)).setSouth(landscape.get(new Tuple(x,y-1))); //sets south room
 				}
-				if (j < 4) { //if there is nothing west of the room
-					landscape[i][j].setWest(landscape[i][j + 1]); //sets west room
+				if (y < 4) { //if there is nothing west of the room
+					landscape.get(new Tuple(x,y)).setWest(landscape.get(new Tuple(x-1,y))); //sets west room
 				}
 
 			}
 		}
-		// to make sure the tech isn't too close to the rocket
-		// each digit is one index of the room array
-		int[] randList = { 00, 01, 03, 04, 10, 14, 30, 34, 40, 41, 43, 44 };
-		int location = (int) (Math.random() * 12);
-		landscape[randList[location] / 10][randList[location] % 10].addTech(); //sets location of tech
 	}
 
 	/**
@@ -47,12 +50,13 @@ public abstract class Planet {
 	 * Method outlining each planet's description method.
 	 */
 	public abstract String getDescription();
+	
 
 	/**
 	 * Gets room.
 	 * @return
 	 */
-	public Room[][] getRoom() {
+	public HashMap<Tuple,Room> getRoom() {
 		return landscape;
 	}
 
